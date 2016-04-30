@@ -1,0 +1,14 @@
+<div class="list-group-item">
+  <h4 class="m-y-0">
+    <%= post.subject || "No subject" %>
+    <small class="text-muted">
+      <%= time_ago post.created_at %>
+    </small>
+  </h4>
+
+  <%= simple_format post.content %>
+
+  <ul class="list-inline m-y-0">
+    <li><%= link_to icon("comment", "Reply"), new_post_comment_path(post) %></li>
+  </ul>
+</div>

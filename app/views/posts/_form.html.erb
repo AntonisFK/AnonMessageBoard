@@ -1,0 +1,7 @@
+<%= simple_form_for @post, remote: true do |f| %>
+  <%= f.input :subject, label: false, placeholder: "Subject (not required, but helpful)" %>
+  <%= f.input :content, label: false %>
+  <div class="form-group">
+    <%= f.submit "Post", class: "btn btn-primary" %>
+  </div>
+<% end %>

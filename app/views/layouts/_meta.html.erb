@@ -1,0 +1,8 @@
+<title><%= content_for?(:meta_title) ? "#{yield(:meta_title)} - Yik Yak" : "Yik Yak " %></title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="theme-color" content="#000">
+<link rel="icon" sizes="192x192" href="/browsericon.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<%= csrf_meta_tags %>

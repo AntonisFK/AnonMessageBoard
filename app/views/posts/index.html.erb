@@ -1,0 +1,35 @@
+<% provide :page_scripts do %>
+  <script type="text/javascript">
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(setLocation);
+      } else {
+        $('#find_posts').html("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function setLocation(position) {
+      $('#find_posts').html('Finding posts...')
+      $('#location_latitude').val(position.coords.latitude);
+      $('#location_longitude').val(position.coords.longitude);
+      $('#new_location').trigger('submit.rails');
+    }
+
+    $('#find_posts').on('click', function(e) {
+      $('#find_posts').html('Getting location...')
+      getLocation();
+      e.preventDefault();
+    });
+  </script>
+<% end %>
+
+<%= form_for Location.new, remote: true do |f| %>
+  <%= f.hidden_field :latitude %>
+  <%= f.hidden_field :longitude %>
+<% end %>
+
+<div class="list-group" id="posts">
+  <div class="list-group-item">
+    <%= link_to "Find post around me", '#/', remote: true, class: "btn btn-primary", id: "find_posts" %>
+  </div>
+</div>

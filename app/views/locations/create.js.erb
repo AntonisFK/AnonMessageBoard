@@ -1,0 +1,9 @@
+$('<%= j render "posts/form" %>').insertBefore('#posts');
+
+<% if @posts.any? %>
+  $('#posts').html('<%= j render @posts %>');
+  $('<h3>Showing \'<%= pluralize @posts.size, "post" %>\' within 1 mile</h3>').insertBefore('#posts');
+  $("time.timeago").timeago();
+<% else %>
+  $('#posts').html('<h4>There are no posts in this location.</h4>');
+<% end %>
